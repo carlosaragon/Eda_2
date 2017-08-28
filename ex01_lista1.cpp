@@ -5,6 +5,17 @@ typedef struct Index {
   int * valor;
 } index;
 
+void criaIndex(index vetorIndex[], int vetorPrincipal[], int tamanhoVetor) {
+  int posicaoVetorPrincipal;
+  posicaoVetorPrincipal = 2;
+
+  for (int i = 0; i < (tamanhoVetor/3); i++) {
+      vetorIndex[i].posicao = posicaoVetorPrincipal;
+      vetorIndex[i].valor = &vetorPrincipal[posicaoVetorPrincipal];
+      posicaoVetorPrincipal = posicaoVetorPrincipal + 3;
+  }
+}
+
 void buscaIndexada(index vetorIndex[], int vetorPrincipal[], int tamanhoVetor) {
   int numeroBuscado;
   std::cin >> numeroBuscado;
@@ -31,9 +42,9 @@ void buscaIndexada(index vetorIndex[], int vetorPrincipal[], int tamanhoVetor) {
   }
 }
 
-int main() {
+int main(int argc, char const *argv[]) {
   int tamanhoVetor;
-  std::cin >> tamanhoVetor;
+  tamanhoVetor = 10;
 
   int * vetorPrincipal;
   vetorPrincipal = new int [tamanhoVetor];
@@ -44,14 +55,9 @@ int main() {
 
   index * vetorIndex;
   vetorIndex = new index[tamanhoVetor/3];
-  int posicaoVetorPrincipal;
-  posicaoVetorPrincipal = 2;
 
-  for (int i = 0; i < (tamanhoVetor/3); i++) {
-      vetorIndex[i].posicao = posicaoVetorPrincipal;
-      vetorIndex[i].valor = &vetorPrincipal[posicaoVetorPrincipal];
-      posicaoVetorPrincipal = posicaoVetorPrincipal + 3;
-  }
+  criaIndex(vetorIndex, vetorPrincipal, tamanhoVetor);
+
   buscaIndexada(vetorIndex, vetorPrincipal, tamanhoVetor);
 
   return 0;
