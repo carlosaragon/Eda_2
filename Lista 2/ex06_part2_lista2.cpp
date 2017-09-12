@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include <cstdlib>
 
 void siftDown(int numbers[], int root, int bottom) {
   int done, maxChild, temp;
@@ -40,9 +40,14 @@ void heapSort(int numbers[], int array_size) {
 }
 
 int main(int argc, char const *argv[]) {
-    int numberVetctor [10] = {1,2,5,8,5,42,7,6,234,21};
+    int numberVetctor [10];
 
+    for (size_t i = 0; i < 10; i++) {
+        numberVetctor[i] = rand() % 100 + 0 ;
+        heapSort(numberVetctor, i);
+    }
     heapSort(numberVetctor, 10);
+
 
     for (size_t i = 0; i < 10; i++) {
         std::cout << numberVetctor[i] << '\n';
